@@ -1,4 +1,4 @@
-package com.casa.azul.rocketboy
+package com.casa.azul.rocketboy.model
 
 import com.devtides.animals.model.MissionApi
 import io.reactivex.Single

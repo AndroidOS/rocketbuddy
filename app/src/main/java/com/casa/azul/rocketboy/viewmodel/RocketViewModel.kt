@@ -1,9 +1,11 @@
-package com.casa.azul.rocketboy
+package com.casa.azul.rocketboy.viewmodel
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.casa.azul.rocketboy.model.Mission
+import com.casa.azul.rocketboy.model.MissionApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver

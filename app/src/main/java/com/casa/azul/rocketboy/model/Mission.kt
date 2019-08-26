@@ -1,4 +1,4 @@
-package com.casa.azul.rocketboy
+package com.casa.azul.rocketboy.model
 
 data class Core(
     val core_serial: String,

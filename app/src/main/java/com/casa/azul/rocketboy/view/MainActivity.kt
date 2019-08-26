@@ -1,25 +1,34 @@
-package com.casa.azul.rocketboy
+package com.casa.azul.rocketboy.view
 
 import android.app.Application
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import com.casa.azul.rocketboy.R
+import com.casa.azul.rocketboy.viewmodel.RocketViewModel
 
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            val test = RocketViewModel(Application())
-            test.getMission()
-        }
+        navController = Navigation.findNavController(this, R.id.fragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(navController, null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
