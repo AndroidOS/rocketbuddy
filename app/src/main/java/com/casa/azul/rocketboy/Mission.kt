@@ -95,7 +95,7 @@ data class Links(
     val flickr_images: List<String>
 )
 
-data class RootObject(
+data class Mission(
     val flight_number: Int,
     val mission_name: String,
     val mission_id: List<Object>,
