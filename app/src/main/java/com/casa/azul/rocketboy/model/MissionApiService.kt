@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MissionApiService {
 
-    private val BASE_URL = "https://api.spacexdata.com/v3/launches/"
+    private val BASE_URL = "https://api.spacexdata.com/v3/"
 
     private val api = Retrofit.Builder()
         .baseUrl(BASE_URL)
@@ -17,7 +17,7 @@ class MissionApiService {
         .build()
         .create(MissionApi::class.java)
 
-    fun getMission(): Single<Mission> {
+    fun getMission(): Single<List<Mission>> {
         return api.getMissions()
     }
 }

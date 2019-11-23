@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.casa.azul.dogs.view.MissionListAdapter
 import com.casa.azul.rocketboy.R
 import com.casa.azul.rocketboy.viewmodel.RocketViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -17,6 +20,7 @@ private const val TAG = "MainFragment"
 class MainFragment : Fragment() {
 
     private lateinit var viewModel: RocketViewModel
+    private val missionListAdapter = MissionListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,10 +33,10 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        buttonDetail.setOnClickListener {
-            val action = MainFragmentDirections.actionGoDetail()
-            Navigation.findNavController(it).navigate(action)
-        }
+//        buttonDetail.setOnClickListener {
+//            val action = MainFragmentDirections.actionGoDetail()
+//            Navigation.findNavController(it).navigate(action)
+//        }
 
     }
 
@@ -42,6 +46,29 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(RocketViewModel::class.java)
         viewModel.getMission()
+
+        missionList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = missionListAdapter
+        }
+
+        observeViewModel()
+    }
+
+    fun observeViewModel() {
+        viewModel.missions.observe(this, Observer { missions ->
+            missions?.let {
+                missionList.visibility = View.VISIBLE
+                missionListAdapter.updateMissionlist(missions)
+            }
+        })
+
+        viewModel.loading.observe(this, Observer {isLoading ->
+            isLoading?.let {
+                progressBar.visibility = if (it) View.VISIBLE else View.GONE
+
+            }
+        })
     }
 
 

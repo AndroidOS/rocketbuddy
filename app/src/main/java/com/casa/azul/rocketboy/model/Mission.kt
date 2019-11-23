@@ -20,14 +20,14 @@ data class FirstStage(
 data class OrbitParams(
     val reference_system: String,
     val regime: String,
-    val longitude: Int,
+    val longitude: Double,
     val semi_major_axis_km: Object,
     val eccentricity: Object,
     val periapsis_km: Object,
     val apoapsis_km: Object,
     val inclination_deg: Object,
     val period_min: Object,
-    val lifespan_years: Int,
+    val lifespan_years: Double,
     val epoch: Object,
     val mean_motion: Object,
     val raan: Object,
@@ -43,14 +43,14 @@ data class Payload(
     val nationality: String,
     val manufacturer: String,
     val payload_type: String,
-    val payload_mass_kg: Int,
+    val payload_mass_kg: Double,
     val payload_mass_lbs: Double,
     val orbit: String,
     val orbit_params: OrbitParams
 )
 
 data class SecondStage(
-    val block: Int,
+    val block: Double,
     val payloads: List<Payload>
 )
 

@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface MissionApi {
 
-    @GET("latest")
-    fun getMissions(): Single<Mission>
+    @GET("launches/")
+    fun getMissions(): Single<List<Mission>>
 }

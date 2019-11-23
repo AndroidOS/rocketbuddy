@@ -29,6 +29,7 @@ def retrofitVersion = '2.3.0'
 def rxJavaVersion = '2.1.1'
 def navVersion = '2.1.0-rc01'
 def lifeCycleExtensionVersion = '2.1.0'
+def glideVersion = '4.10.0'
 
 
 dependencies {
@@ -56,6 +57,7 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-extensions:$lifeCycleExtensionVersion"
 
-
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
 }

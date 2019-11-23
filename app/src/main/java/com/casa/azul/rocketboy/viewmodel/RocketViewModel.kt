@@ -15,20 +15,24 @@ private const val TAG = "RocketViewModel"
 
 class RocketViewModel(application: Application) : AndroidViewModel(application) {
 
-    val missions by lazy { MutableLiveData<Mission>() }
+    val missions by lazy { MutableLiveData<List<Mission>>() }
+    val loading = MutableLiveData<Boolean>()
 
     private val disposable = CompositeDisposable()
     private val api = MissionApiService()
 
     fun getMission() {
-        Log.d(TAG, "getMission Started****************************************")
+        loading.value = true
+        Log.d(TAG, "getMission Started")
         disposable.add(
             api.getMission()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<Mission>() {
-                    override fun onSuccess(t: Mission) {
-                        Log.d(TAG, "Mission object = $t")
+                .subscribeWith(object : DisposableSingleObserver<List<Mission>>() {
+                    override fun onSuccess(t: List<Mission>) {
+
+                        missions.value = t
+                        loading.value = false
                     }
 
                     override fun onError(e: Throwable) {
