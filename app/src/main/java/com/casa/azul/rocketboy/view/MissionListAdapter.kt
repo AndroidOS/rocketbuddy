@@ -8,6 +8,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.casa.azul.rocketboy.R
 import com.casa.azul.rocketboy.model.Mission
+import com.casa.azul.rocketboy.util.detailMission
 import com.casa.azul.rocketboy.util.getProgressDrawable
 import com.casa.azul.rocketboy.util.loadImage
 import com.casa.azul.rocketboy.view.MainFragmentDirections
@@ -50,7 +51,7 @@ class MissionListAdapter(val missionList: ArrayList<Mission>) :
         holder.view.setOnClickListener {
             //val uuid = it.photo_id.text.toString().toInt()
             val action = MainFragmentDirections.actionGoDetail()
-
+            detailMission = missionList[position]
             Navigation.findNavController(it)
                 .navigate(action)
         }

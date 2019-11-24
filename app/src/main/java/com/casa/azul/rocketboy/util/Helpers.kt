@@ -6,6 +6,9 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.casa.azul.rocketboy.R
+import com.casa.azul.rocketboy.model.Mission
+
+var detailMission: Mission? = null
 
 fun getProgressDrawable(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {
