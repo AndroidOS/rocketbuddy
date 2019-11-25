@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.casa.azul.rocketboy.view.MainFragment"
-        android:label="fragment_main"
+        android:label="SpaceX Missions"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/actionGoDetail"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.casa.azul.rocketboy.view.DetailFragment"
-        android:label="fragment_detail"
+        android:label="Mission Details"
         tools:layout="@layout/fragment_detail">
         <action
             android:id="@+id/actionGoMain"
