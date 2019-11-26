@@ -33,11 +33,11 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-//        buttonDetail.setOnClickListener {
-//            val action = MainFragmentDirections.actionGoDetail()
-//            Navigation.findNavController(it).navigate(action)
-//        }
+        refreshLayout.setOnRefreshListener {
 
+            viewModel.getMission()
+            refreshLayout.isRefreshing = false
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
