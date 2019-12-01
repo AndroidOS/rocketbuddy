@@ -19,7 +19,6 @@
         android:layout_below="@id/detail_web_view"
         android:textSize="15sp"
         android:textColor="@color/textColor"
-        android:lines="20"
-        android:text="@string/hello_blank_fragment" />
+        android:lines="20" />
 
 </RelativeLayout>

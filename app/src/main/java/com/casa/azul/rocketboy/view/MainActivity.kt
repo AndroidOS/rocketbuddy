@@ -1,14 +1,17 @@
 package com.casa.azul.rocketboy.view
 
 import android.app.Application
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.casa.azul.rocketboy.R
+import com.casa.azul.rocketboy.util.showAlert
 import com.casa.azul.rocketboy.viewmodel.RocketViewModel
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -42,8 +45,13 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_About -> {
+                showAlert(this)
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 }
