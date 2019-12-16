@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.lifecycle.ViewModelProviders
 
 import com.casa.azul.rocketboy.R
-import com.casa.azul.rocketboy.util.detailMission
+import com.casa.azul.rocketboy.model.Mission
+
 import com.casa.azul.rocketboy.util.getProgressDrawable
 import com.casa.azul.rocketboy.util.loadImage
 import com.casa.azul.rocketboy.viewmodel.RocketViewModel
@@ -21,7 +23,9 @@ import kotlinx.android.synthetic.main.mission_item.view.*
 
 class DetailFragment : Fragment() {
 
-
+    private lateinit var viewModel: RocketViewModel
+    private var missionNumber = 0
+    private lateinit var mission: Mission
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +37,16 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        detailImageView.loadImage(detailMission?.links!!.flickr_images[0],
-//            getProgressDrawable(detailImageView.context))
+
+        arguments?.let {
+            missionNumber = DetailFragmentArgs.fromBundle(it).uuid
+        }
+
+        viewModel = activity?.run {
+            ViewModelProviders.of(this)[RocketViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
+
+        mission = viewModel.getDetailMission(missionNumber)
 
         detail_web_view.webViewClient = object : WebViewClient(){
             override fun shouldOverrideUrlLoading(
@@ -44,8 +56,9 @@ class DetailFragment : Fragment() {
                 return super.shouldOverrideUrlLoading(view, request)
             }
         }
-        detail_web_view.loadUrl(detailMission?.links!!.wikipedia)
-        tv_detail.text = detailMission?.details
+
+        tv_detail.text = mission.details
+        detail_web_view.loadUrl(mission?.links!!.wikipedia)
     }
 
 

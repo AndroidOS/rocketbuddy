@@ -21,6 +21,11 @@ class RocketViewModel(application: Application) : AndroidViewModel(application) 
     private val disposable = CompositeDisposable()
     private val api = MissionApiService()
 
+    fun getDetailMission(i: Int): Mission {
+
+        return missions.value!![i]
+    }
+
     fun getMission() {
         loading.value = true
         Log.d(TAG, "getMission Started")

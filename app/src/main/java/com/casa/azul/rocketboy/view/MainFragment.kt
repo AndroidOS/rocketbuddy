@@ -44,7 +44,11 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewModel = ViewModelProviders.of(this).get(RocketViewModel::class.java)
+        //viewModel = ViewModelProviders.of(this).get(RocketViewModel::class.java)
+        viewModel = activity?.run {
+            ViewModelProviders.of(this)[RocketViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
+
         viewModel.getMission()
 
         missionList.apply {

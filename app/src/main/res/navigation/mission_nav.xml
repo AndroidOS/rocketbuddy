@@ -22,5 +22,9 @@
         <action
             android:id="@+id/actionGoMain"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="uuid"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

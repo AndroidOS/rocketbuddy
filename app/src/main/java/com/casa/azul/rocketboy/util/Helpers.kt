@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.casa.azul.rocketboy.R
 import com.casa.azul.rocketboy.model.Mission
 
-var detailMission: Mission? = null
+//var detailMission: Mission? = null
 
 fun getProgressDrawable(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {
@@ -33,23 +33,13 @@ fun ImageView.loadImage(uri: String?, progressDrawable: CircularProgressDrawable
 fun showAlert(context: Context){
     val dialogBuilder = AlertDialog.Builder(context)
 
-    // set message of alert dialog
     dialogBuilder.setMessage("This app was developed by Manuel Carvalho")
-        // if the dialog is cancelable
         .setCancelable(true)
-        // positive button text and action
-//            .setPositiveButton("Proceed", DialogInterface.OnClickListener {
-//                    dialog, id -> finish()
-//            })
-        // negative button text and action
-        .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+        .setNegativeButton("O.K", DialogInterface.OnClickListener {
                 dialog, id -> dialog.cancel()
         })
 
-    // create dialog box
     val alert = dialogBuilder.create()
-    // set title for alert dialog box
     alert.setTitle("Rocket Buddy")
-    // show alert dialog
     alert.show()
 }
