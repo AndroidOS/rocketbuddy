@@ -2,23 +2,17 @@ package com.casa.azul.rocketboy.view
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-
 import com.casa.azul.rocketboy.R
 import com.casa.azul.rocketboy.model.Mission
-
-import com.casa.azul.rocketboy.util.getProgressDrawable
-import com.casa.azul.rocketboy.util.loadImage
 import com.casa.azul.rocketboy.viewmodel.RocketViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
-import kotlinx.android.synthetic.main.mission_item.view.*
 
 
 class DetailFragment : Fragment() {
@@ -49,16 +43,11 @@ class DetailFragment : Fragment() {
         mission = viewModel.getDetailMission(missionNumber)
 
         detail_web_view.webViewClient = object : WebViewClient(){
-            override fun shouldOverrideUrlLoading(
-                view: WebView?,
-                request: WebResourceRequest?
-            ): Boolean {
-                return super.shouldOverrideUrlLoading(view, request)
-            }
         }
 
         tv_detail.text = mission.details
-        detail_web_view.loadUrl(mission?.links!!.wikipedia)
+        tv_detail.movementMethod = ScrollingMovementMethod()
+        detail_web_view.loadUrl(mission.links.wikipedia)
     }
 
 
