@@ -7,10 +7,10 @@ data class Core(
     val gridfins: Boolean,
     val legs: Boolean,
     val reused: Boolean,
-    val land_success: Object,
+    val land_success: Any,
     val landing_intent: Boolean,
-    val landing_type: Object,
-    val landing_vehicle: Object
+    val landing_type: Any,
+    val landing_vehicle: Any
 )
 
 data class FirstStage(
@@ -21,23 +21,23 @@ data class OrbitParams(
     val reference_system: String,
     val regime: String,
     val longitude: Double,
-    val semi_major_axis_km: Object,
-    val eccentricity: Object,
-    val periapsis_km: Object,
-    val apoapsis_km: Object,
-    val inclination_deg: Object,
-    val period_min: Object,
+    val semi_major_axis_km: Any,
+    val eccentricity: Any,
+    val periapsis_km: Any,
+    val apoapsis_km: Any,
+    val inclination_deg: Any,
+    val period_min: Any,
     val lifespan_years: Double,
-    val epoch: Object,
-    val mean_motion: Object,
-    val raan: Object,
-    val arg_of_pericenter: Object,
-    val mean_anomaly: Object
+    val epoch: Any,
+    val mean_motion: Any,
+    val raan: Any,
+    val arg_of_pericenter: Any,
+    val mean_anomaly: Any
 )
 
 data class Payload(
     val payload_id: String,
-    val norad_id: List<Object>,
+    val norad_id: List<Any>,
     val reused: Boolean,
     val customers: List<String>,
     val nationality: String,
@@ -71,7 +71,7 @@ data class Rocket(
 )
 
 data class Telemetry(
-    val flight_club: Object
+    val flight_club: Any
 )
 
 data class LaunchSite(
@@ -85,7 +85,7 @@ data class Links(
     val mission_patch_small: String,
     val reddit_campaign: String,
     val reddit_launch: String,
-    val reddit_recovery: Object,
+    val reddit_recovery: Any,
     val reddit_media: String,
     val presskit: String,
     val article_link: String,
@@ -98,7 +98,7 @@ data class Links(
 data class Mission(
     val flight_number: Int,
     val mission_name: String,
-    val mission_id: List<Object>,
+    val mission_id: List<Any>,
     val launch_year: String,
     val launch_date_unix: Int,
     val launch_date_utc: String,
@@ -117,8 +117,8 @@ data class Mission(
     val upcoming: Boolean,
     val static_fire_date_utc: String,
     val static_fire_date_unix: Int,
-    val timeline: Object,
-    val crew: Object,
-    val last_wiki_update: Object,
-    val is_date_from_wiki: Object
+    val timeline: Any,
+    val crew: Any,
+    val last_wiki_update: Any,
+    val is_date_from_wiki: Any
 )
