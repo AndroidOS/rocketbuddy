@@ -2,7 +2,6 @@ package com.casa.azul.rocketboy.viewmodel
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.casa.azul.rocketboy.model.Mission
 import com.casa.azul.rocketboy.model.MissionApiService
@@ -13,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 
 private const val TAG = "RocketViewModel"
 
-class RocketViewModel(application: Application) : AndroidViewModel(application) {
+class RocketViewModel(application: Application) : BaseViewModel(application) {
 
     val missions by lazy { MutableLiveData<List<Mission>>() }
     val loading = MutableLiveData<Boolean>()

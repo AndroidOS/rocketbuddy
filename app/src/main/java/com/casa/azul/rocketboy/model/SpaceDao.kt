@@ -8,14 +8,14 @@ import androidx.room.Insert
 interface SpaceDao {
 
     @Insert
-    suspend fun insertAll(vararg missions: Mission): List<Long>
+    suspend fun insertAll(vararg missions1: Mission1): List<Long>
 
-    @androidx.room.Query("SELECT * FROM missions")
-    suspend fun getAllMissions(): List<Mission>
+    @androidx.room.Query("SELECT * FROM mission1")
+    suspend fun getAllMissions(): List<Mission1>
 
-    @androidx.room.Query("SELECT * FROM missions WHERE uuid = :missionId")
-    suspend fun getMission(missionId: Int): Mission
+    @androidx.room.Query("SELECT * FROM mission1 WHERE uuid = :missionId")
+    suspend fun getMission(missionId: Int): Mission1
 
-    @androidx.room.Query("DELETE FROM missions")
+    @androidx.room.Query("DELETE FROM mission1")
     suspend fun deleteAllMissions()
 }

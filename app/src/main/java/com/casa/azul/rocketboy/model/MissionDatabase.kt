@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(Mission::class), version = 1)
+@Database(entities = arrayOf(Mission1::class), version = 1)
 abstract class MissionDatabase : RoomDatabase() {
     abstract fun missionDao(): SpaceDao
 
