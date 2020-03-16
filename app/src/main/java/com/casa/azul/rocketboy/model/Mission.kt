@@ -1,5 +1,9 @@
 package com.casa.azul.rocketboy.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Core(
     val core_serial: String,
     val flight: Int,
@@ -13,10 +17,12 @@ data class Core(
     val landing_vehicle: Any
 )
 
+@Entity
 data class FirstStage(
     val cores: List<Core>
 )
 
+@Entity
 data class OrbitParams(
     val reference_system: String,
     val regime: String,
@@ -35,6 +41,7 @@ data class OrbitParams(
     val mean_anomaly: Any
 )
 
+@Entity
 data class Payload(
     val payload_id: String,
     val norad_id: List<Any>,
@@ -49,11 +56,13 @@ data class Payload(
     val orbit_params: OrbitParams
 )
 
+@Entity
 data class SecondStage(
     val block: Double,
     val payloads: List<Payload>
 )
 
+@Entity
 data class Fairings(
     val reused: Boolean,
     val recovery_attempt: Boolean,
@@ -61,6 +70,7 @@ data class Fairings(
     val ship: String
 )
 
+@Entity
 data class Rocket(
     val rocket_id: String,
     val rocket_name: String,
@@ -70,16 +80,19 @@ data class Rocket(
     val airings: Fairings
 )
 
+@Entity
 data class Telemetry(
     val flight_club: Any
 )
 
+@Entity
 data class LaunchSite(
     val site_id: String,
     val site_name: String,
     val site_name_long: String
 )
 
+@Entity
 data class Links(
     val mission_patch: String,
     val mission_patch_small: String,
@@ -95,6 +108,7 @@ data class Links(
     val flickr_images: List<String>
 )
 
+@Entity
 data class Mission(
     val flight_number: Int,
     val mission_name: String,
@@ -121,4 +135,7 @@ data class Mission(
     val crew: Any,
     val last_wiki_update: Any,
     val is_date_from_wiki: Any
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var uuid: Int = 0
+}
