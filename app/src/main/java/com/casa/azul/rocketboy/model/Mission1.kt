@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Mission1
     (
     val name: String?,
-    val mag: Double?
+    val launch_date_utc: String
 ) {
     @PrimaryKey(autoGenerate = true)
     var uuid: Int = 0
