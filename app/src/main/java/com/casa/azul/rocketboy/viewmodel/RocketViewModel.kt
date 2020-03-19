@@ -2,6 +2,7 @@ package com.casa.azul.rocketboy.viewmodel
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.casa.azul.rocketboy.model.Mission
 import com.casa.azul.rocketboy.model.Mission1
@@ -18,6 +19,7 @@ private const val TAG = "RocketViewModel"
 class RocketViewModel(application: Application) : BaseViewModel(application) {
 
     val missions by lazy { MutableLiveData<List<Mission>>() }
+    val missions1 by lazy { MutableLiveData<List<Mission1>>() }
     val loading = MutableLiveData<Boolean>()
 
     private val disposable = CompositeDisposable()
@@ -61,7 +63,21 @@ class RocketViewModel(application: Application) : BaseViewModel(application) {
                 list[i].uuid = result[i].toInt()
                 ++i
             }
-            //fetchFromDatabase()
+            fetchFromDatabase()
+        }
+    }
+
+    private fun fetchFromDatabase() {
+        loading.value = true
+        launch {
+            val missions = MissionDatabase(getApplication()).missionDao().getAllMissions()
+            missions1.value = missions
+
+            Toast.makeText(
+                getApplication(),
+                "Missions retrieved from database. ${missions.size} objects",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
