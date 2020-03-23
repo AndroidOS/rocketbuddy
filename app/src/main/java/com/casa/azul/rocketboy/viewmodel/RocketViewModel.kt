@@ -68,7 +68,7 @@ class RocketViewModel(application: Application) : BaseViewModel(application) {
     }
 
     private fun fetchFromDatabase() {
-        loading.value = true
+        //loading.value = true
         launch {
             val missions = MissionDatabase(getApplication()).missionDao().getAllMissions()
             missions1.value = missions

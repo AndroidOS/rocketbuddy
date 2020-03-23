@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.casa.azul.rocketboy.R
 import com.casa.azul.rocketboy.model.Mission
 import com.casa.azul.rocketboy.viewmodel.RocketViewModel
@@ -37,7 +37,7 @@ class DetailFragment : Fragment() {
         }
 
         viewModel = activity?.run {
-            ViewModelProviders.of(this)[RocketViewModel::class.java]
+            ViewModelProvider(this).get(RocketViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
         mission = viewModel.getDetailMission(missionNumber)

@@ -2,13 +2,12 @@ package com.casa.azul.rocketboy.view
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.casa.azul.dogs.view.MissionListAdapter
 import com.casa.azul.rocketboy.R
@@ -46,7 +45,8 @@ class MainFragment : Fragment() {
 
         //viewModel = ViewModelProviders.of(this).get(RocketViewModel::class.java)
         viewModel = activity?.run {
-            ViewModelProviders.of(this)[RocketViewModel::class.java]
+            //ViewModelProviders.of(this)[RocketViewModel::class.java]
+            ViewModelProvider(this).get(RocketViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
         viewModel.getMission()
